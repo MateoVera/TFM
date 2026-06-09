@@ -271,7 +271,7 @@ def muestra_pagina_analisis():
                     xaxis_tickangle=-45
                 )
                 
-                st.plotly_chart(figuraBarra, use_container_width=True)
+                st.plotly_chart(figuraBarra, width = "stretch")
                 
             except ImportError:
                 # Fallback por si no has instalado Plotly aún
@@ -282,7 +282,7 @@ def muestra_pagina_analisis():
 
             # 🔥 SEGUNDO LA TABLA (Datos duros)
             st.markdown("### Datos Detallados")
-            st.dataframe(dfFiltrado, use_container_width=True, hide_index=True)
+            st.dataframe(dfFiltrado, width = "stretch", hide_index=True)
 
     finally:
         # Cierre infalible
