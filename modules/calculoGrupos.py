@@ -951,7 +951,7 @@ def muestra_pagina_calculo():
 
                 colBtn1, colBtn2 = st.columns(2)
                 with colBtn1:
-                    if st.button("🔄 Restaurar Autorizados", help="Restaura los grupos autorizados a los valores adjudicados por la universidad para las filas filtradas.", use_container_width=True):
+                    if st.button("🔄 Restaurar Autorizados", help = "Restaura los grupos autorizados a los valores adjudicados por la universidad para las filas filtradas.", width = "stretch"):
                         with st.spinner("Restaurando grupos originales..."):
                             cambiosRestaurar = {}
                             for indice, fila in dfFiltrado.iterrows():
@@ -965,7 +965,7 @@ def muestra_pagina_calculo():
                         st.rerun()
 
                 with colBtn2:
-                    if st.button("⚙️ Autorizar Calculados", help="Aplica los grupos sugeridos por el motor de cálculo a las filas filtradas.", use_container_width=True):
+                    if st.button("⚙️ Autorizar Calculados", help="Aplica los grupos sugeridos por el motor de cálculo a las filas filtradas.", width = "stretch"):
                         with st.spinner("Autorizando grupos y regenerando distribución..."):
                             cambiosAutomaticos = {}
                             for indice, fila in dfFiltrado.iterrows():
@@ -981,7 +981,7 @@ def muestra_pagina_calculo():
                                 'Total_Matriculados', 'Grupos_Calculados', 'Creditos_Calculados', 'Creditos_Autorizados', 'Grupos_Originales', 'Creditos_Originales'],
                     hide_index = True,
                     key = "data_editor_grupos",
-                    use_container_width = True,
+                    width = "stretch",
                     column_config = {
                         "Grupos_Originales": None,
                         "Creditos_Originales": None
@@ -1060,7 +1060,7 @@ def muestra_pagina_calculo():
                                     labels={'Tipo_Clase': 'Modalidad', 'Cantidad': 'Número de Grupos'}
                                 )
                                 fig.update_layout(xaxis_title="Tipo de Clase", yaxis_title="Cantidad de Grupos", legend_title="Origen del Dato")
-                                st.plotly_chart(fig, use_container_width=True)
+                                st.plotly_chart(fig, width = "stretch")
                             except ImportError:
                                 dfStChart = dfTipos.set_index('Tipo_Clase')[['Grupos_Calculados', 'Grupos_Autorizados']]
                                 st.bar_chart(dfStChart)
@@ -1082,7 +1082,7 @@ def muestra_pagina_calculo():
                                              .format(formateaSignoGrupos, subset=['Diferencia_Grupos'])
                                              .format(formateaSignoCreditos, subset=['Diferencia_Creditos'])
                                              .format("{:.2f}", subset=['Creditos_Calculados', 'Creditos_Autorizados']),
-                                use_container_width=True,
+                                width = "stretch",
                                 hide_index=True,
                                 column_config={
                                     "Tipo_Clase": st.column_config.TextColumn("Modalidad Docente", width="medium"),
@@ -1165,7 +1165,7 @@ def muestra_pagina_calculo():
                                     labels={'Tipo_Clase': 'Modalidad', 'Cantidad': 'Número de Grupos'}
                                 )
                                 figComp.update_layout(xaxis_title="Tipo de Clase", yaxis_title="Cantidad de Grupos", legend_title="Período")
-                                st.plotly_chart(figComp, use_container_width=True)
+                                st.plotly_chart(figComp, width = "stretch")
                             except ImportError:
                                 dfStChartComp = dfTiposComp.set_index('Tipo_Clase')[['Grupos_P1', 'Grupos_P2']]
                                 dfStChartComp.columns = [f'Estimación ({periodo1})', f'Final ({periodo2})']
@@ -1188,7 +1188,7 @@ def muestra_pagina_calculo():
                                                  .format(formatSignoGrupos, subset=['Diferencia_Grupos'])
                                                  .format(formatSignoCreditos, subset=['Diferencia_Creditos'])
                                                  .format("{:.2f}", subset=['Creditos_P1', 'Creditos_P2']),
-                                use_container_width=True,
+                                width = "stretch",
                                 hide_index=True,
                                 column_config={
                                     "Tipo_Clase": st.column_config.TextColumn("Modalidad Docente", width="medium"),
@@ -1281,7 +1281,7 @@ def muestra_pagina_calculo():
 
                             st.dataframe(
                                 dfTablaAzul,
-                                use_container_width = True,
+                                width = "stretch",
                                 hide_index = True,
                                 column_config = {
                                     "Cod_Asignatura": "Asignatura",
@@ -1388,7 +1388,7 @@ def muestra_pagina_calculo():
                         
                         st.dataframe(
                             df_vista_previa.style.apply(aplicar_colores, axis=None), 
-                            use_container_width=True, 
+                            width = "stretch", 
                             hide_index=True
                         )
                         
@@ -1399,7 +1399,7 @@ def muestra_pagina_calculo():
                             data = buffer.getvalue(),
                             file_name = "tabla_azul.xlsx",
                             mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                            use_container_width=True
+                            width = "stretch"
                         )
 
     finally:
